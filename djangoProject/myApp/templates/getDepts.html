@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>部門列表</title>
+</head>
+<body>
+<h1>部門列表</h1>
+<ul>
+    {%  for dept in depts  %}
+  <h3><li><a href="{{  dept.id  }}">部門名稱 : {{  dept.d_name  }}</a></li></h3>
+    <p>工作內容 : {{  dept.d_description  }}</p>
+    {%  endfor  %}
+</ul>
+</body>
+</html>

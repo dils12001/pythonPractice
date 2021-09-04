@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GetUsers</title>
+</head>
+<body>
+<!--  h1是傳過來的字典key的值  -->
+{# 這是註釋喔格~模板語法格式 -> 格式 : {{ 中間寫變數 }} #}
+<!--  格式 : \{\{ 中間寫變數 \}\}  -->
+<h1>{{h1}}</h1>
+<ul>
+    {# 這是註釋喔格~模板語法格式 -> {% 中間寫python代碼 %} #}
+    <!--users是傳過來的字典key='users'的 "值"，所以users = [user1(Users類的對象,一筆用戶記錄),user2,...]-->
+    {% for user in users %}
+    <li>
+        <h4>姓名 : {{ user.u_name }}</h4>
+        <p>
+        {%  if user.u_gender  %}sex : 噁男
+        {%  else  %}sex : 妹紙
+        {% endif %}
+        , Age:{{ user.u_age }}
+        </p>
+    </li>
+    {% endfor %}<!--  結束 for迴圈  -->
+</ul>
+</body>
+</html>

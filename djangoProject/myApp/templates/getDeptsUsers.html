@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{deptName}}部門員工列表</title>
+</head>
+<body>
+<h1>{{deptName}}部門</h1>
+<h3>員工列表</h3>
+<ul>
+    {% for deptUser in deptUsers %}
+    <li>
+        <h4>姓名 : {{ deptUser.u_name }}</h4>
+        <p>
+        {%  if deptUser.u_gender  %}sex : 噁男
+        {%  else  %}sex : 妹紙
+        {% endif %}
+        , Age:{{ deptUser.u_age }}
+        </p>
+    </li>
+    {% endfor %}
+</ul>
+</body>
+</html>
