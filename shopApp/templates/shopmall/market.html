@@ -1,0 +1,154 @@
+{% extends 'shopmall/base.html' %}
+{% load static %}
+
+
+
+{% block linkscript %}
+    <link rel="stylesheet" href="{% static 'market/css/market.css/' %}">
+    <script type="text/javascript" charset="UTF-8" src="{% static 'market/js/market.js' %}"></script>
+{% endblock linkscript %}
+
+
+
+{% block base %}
+<div id="market" style="overflow-x: hidden;">
+    <section id="category">
+        <nav>
+            <div style="height: 1.4rem; background-image: url('https://cf.shopee.tw/file/8bceab95ba1073fe724b3f508d891879'); background-size: cover; background-color: white; position: relative;">
+
+                <div>
+                    <span style="color: rgb(238, 77, 45);">
+                        <div class="typo-m16">主要分類</div>
+                    </span>
+                </div>
+
+                <span style="font-weight: bold;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </svg>
+                    {{ currentCategory.1 }}
+                    {% if currentCategory.3 != None %}
+                     > {{ currentCategory.3 }}
+                    {% endif %}
+                </span>
+
+                <a href="#" style="color: rgba(0, 0, 0, 0.54); position: absolute; right: 0.1rem;">查看更多
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                        <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                    </svg>
+                </a>
+
+            </div>
+        </nav>
+
+
+        <div style="overflow-x: auto;">
+            {% for item in productTypesList %}
+            <a href="/market/{{item.typeId}}/0/0/">
+                <div style="text-align: center;">
+                    <img src="{{ item.img }}" alt="noPictures">
+                    <div>
+                        {{ item.typeName }}
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </section>
+
+
+    <section>
+        <nav id="orderNav">
+            <div class="dropdowns">
+
+                <ul>
+                    <li id="childCategory">
+                        <span>進階分類
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                        </span>
+                    </li>
+                    <li id="priceOrder">
+                        <span>綜合排序
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                        </span>
+                    </li>
+                </ul>
+
+
+                <div id="typediv">
+                    <div>
+                        {% for item in childTypeList %}
+                        <a class="type_a" href="/market/{{ currentCategory.0 }}/{{ item.1 }}/0/"><span class="span_css">{{ item.0 }}</span></a>
+                        {% endfor %}
+                    </div>
+                </div>
+
+
+                <div id="sortdiv">
+                    <div>
+                        <a class="sort_a" href="/market/{{ currentCategory.0 }}/{% if currentCategory.2 == None%}0{% else %}{{ currentCategory.2 }}{% endif %}/1/"><span class="span_css">熱門排序</span></a>
+                        <a class="sort_a" href="/market/{{ currentCategory.0 }}/{% if currentCategory.2 == None%}0{% else %}{{ currentCategory.2 }}{% endif %}/2/"><span class="span_css">銷量排序</span></a>
+                        <a class="sort_a" href="/market/{{ currentCategory.0 }}/{% if currentCategory.2 == None%}0{% else %}{{ currentCategory.2 }}{% endif %}/3/"><span class="span_css">價格最低</span></a>
+                        <a class="sort_a" href="/market/{{ currentCategory.0 }}/{% if currentCategory.2 == None%}0{% else %}{{ currentCategory.2 }}{% endif %}/4/"><span class="span_css">價格最高</span></a>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="parent">
+                {% for item in productsList %}
+                <div class="child">
+                    <a href="#">
+                        <img src="{{ item.productImg }}" alt="noNewFind"><br>
+
+                        <span class="productName">{{ item.productName }}</span><br/>
+
+                        {% if item.originalPrice != 0 %}
+                        <span class="originalPrice">${{ item.originalPrice }}</span>
+                        {% endif %}
+                        <span class="discountPrice">${{ item.discountPrice }}</span><br/>
+
+                        <div class="star-bar">
+                            <div class="progress">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: {% widthratio item.hot 5 100 %}%;"></div>
+                            </div>
+                            <div class="star-img"></div>
+                        </div>
+
+                        {% if item.sales > 10000 %}
+                        <span class="sales">已售出 {% widthratio item.sales 10000 1 %}萬</span><br/>
+                        {% else %}
+                        <span class="sales">已售出 {{ item.sales }}</span><br/>
+                        {% endif %}
+
+
+                        <span class="shopLocation">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                                <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+                                <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                            </svg>{{ item.shopLocation }}
+                        </span><br/>
+
+                        <section id="cart_button">
+                            <button ga="{{ item.productId }}" class="subShopping">-</button>
+                            <span id="{{ item.productId }}">{{ item.cartNum|default:0 }}</span>
+                            <button ga="{{ item.productId }}" class="addShopping">+</button>
+                        </section>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+
+
+
+        </nav>
+    </section>
+</div>
+
+
+{% endblock base %}

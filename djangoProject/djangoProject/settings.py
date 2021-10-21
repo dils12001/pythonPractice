@@ -24,9 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-cm91@p3gq5ckhsm^65kyybp^4-uhk4p3)68chht%6j6g1wj(0!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# 如果 DEBUG = True 將永遠不會調用404.html
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# 允許哪些主機可訪問我的網頁
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -35,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    # session功能
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -43,9 +46,10 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    # session功能
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -128,9 +132,35 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+# 參考 home.html {% load static files from staticfiles %}
+# 以下表示static文件路徑，此project下的'myStatic'目錄
+STATIC_URL = '/myStatic/'
+# 如果只寫 STATIC_URL，那麼路徑沒問題，但無法正常顯示，需加下面的 STATICFILES_DIRS，可添加其他 dir (ex. js, css...)
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'myStatic'),
+]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# 以下配置用 redis 當作緩存，將 session 儲存到 redis
+SESSION_ENGINE = 'redis_sessions.session'
+SESSION_REDIS = {
+    'host': 'localhost',
+    'port': 6379,
+    'db': 0,
+    'password': 'Zaq12wsx',
+    'prefix': 'session',
+    'socket_timeout': 1
+}
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'myMedia')
+
+
+
+
+
+

@@ -1,0 +1,234 @@
+#mine{
+    width: 10rem;
+    height: 100%;
+    position: absolute;
+    z-index: 10;
+    background: whitesmoke;
+    overflow: hidden;
+    padding-top: 4rem;
+    padding-bottom: 1.5rem;
+}
+
+
+.fixed{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 4rem;
+    background: pink;
+    padding-top: 1.5rem;
+}
+.fixed > span{
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    float: left;
+    margin: 0 0.3rem 0;
+    font-size: 1.5rem;
+    color: black;
+    background: white;
+    text-align: center;
+    border-radius: 50%;
+    line-height: 1.8rem;
+}
+.fixed p{
+    margin-bottom: 0.5rem;
+    font-size: 0.5rem;
+    color: white;
+}
+.fixed p span:first-child{
+    color: black;
+}
+.fixed p span:last-child{
+    color: red;
+    display: inline-block;
+    text-indent: 0.3rem;
+}
+#register{
+    position: absolute;
+    right: 0.3rem;
+    top: 1.3rem;
+    color: white;
+    font-size: 1rem;
+}
+.fixed p:last-child{
+    background: #C26EFF;
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    bottom: 0;
+    margin-bottom: 0;
+    font-size: 0.4rem;
+    line-height: 0.5rem;
+    height: 0.5rem;
+}
+.fixed p:last-child span{
+    margin: 0.2rem;
+}
+
+.mine{
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    padding-bottom: 1.5rem;
+    font-size: 0.4rem;
+}
+.mine p a{
+    color: grey;
+    float: right;
+}
+
+.mine #nav, .mine menu{
+    padding: 0.5rem 0 0.3rem;
+    margin-bottom: 0.4rem;
+    background: white;
+}
+.mine #nav ul, .mine menu ul{
+    display: flex;
+    justify-content: space-around;
+}
+.mine #nav ul li dl, .mine menu ul li dl{
+    text-align: center;
+}
+.mine #nav ul li dl dt, .mine menu ul li dl dt{
+    width: 100%;
+    line-height: 1rem;
+}
+.mine #nav ul li dl dt span, .mine menu ul li dl dt span{
+    font-size: 0.5rem;
+}
+.mine menu ul{
+    flex-wrap: wrap;
+}
+.mine menu ul li{
+    width: 25%;
+}
+.mine menu ul li:last-child{
+    width: 100%;
+}
+.mine menu ul li:last-child dl{
+    width: 25%;
+}
+.mine p:last-child > a{
+    line-height: 1.5rem;
+    text-align: center;
+    width: 100%;
+    display: block;
+    float: none;
+}
+
+#allOrders{
+    width: 10rem;
+}
+
+.oneOrder{
+    background: white;
+    font-weight: bold;
+    color: 	#B800B8;
+    width:10rem;
+    margin: 0.2rem 0;
+}
+
+.oneOrder > div{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.orderId{
+    /*position: relative;
+    left: 0.5rem;*/
+    width: 6.5rem;
+}
+
+.orderProgress{
+    /*position: relative;
+    left: 1rem;*/
+    width: 3.5rem;
+}
+
+.orderDetail{
+    /*position: relative;
+    left: 1.5rem;*/
+    color: blue;
+    width: 3rem;
+}
+
+.detail{
+    color: black;
+    font-weight: normal;
+}
+
+img{
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
+.menuList{
+    display: flex;
+    align-items: center;
+    margin: 0.2rem;
+}
+
+.menuList > a{
+    display: flex;
+}
+
+.rightDiv > a > p{
+    font-size: 0.45rem;
+    width: 100%;
+    height: 1.2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.rightDiv{
+    position: relative;
+    top: -0.37rem;
+}
+
+.rightDiv > section{
+    position: relative;
+    width: 1.5rem;
+    left: 4rem;
+    top: 0.25rem;
+}
+
+.rightDiv > a > span{
+    position: relative;
+    left: 1rem;
+    bottom: -0.7rem;
+    color: red;
+}
+
+.payTheBill{
+    border-top: 0.1rem dashed purple;
+    font-weight: bold;
+}
+
+.payTheBill > p > span{
+
+    width: 3.9rem;
+}
+
+.payTheBill > p{
+    padding: 0.2rem 0;
+    display: flex;
+}
+
+.cancel{
+    font-size: 0.4rem!important;
+    width: 2.2rem!important;
+    height:  0.7rem!important;
+    line-height: 0.5rem!important;
+    font-weight: bold;
+    border: 0.1rem solid black;
+    background: yellow;
+
+}
+
+ul{
+    width: 10rem;
+}

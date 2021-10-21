@@ -1,0 +1,77 @@
+{% extends 'shopmall/base.html' %}
+{% load static %}
+
+
+
+{% block linkscript %}
+    <link rel="stylesheet" href="{% static 'mine/css/register.css/' %}">
+    <script type="text/javascript" charset="UTF-8" src="{% static 'mine/js/register.js' %}"></script>
+{% endblock linkscript %}
+
+
+
+{% block base %}
+<div id="register">
+    <div id="header">
+        <a href="/mine/"><p><返回</p></a>
+    </div>
+
+    <form class="horizontal" action="/register/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="input-group input-group-sm">
+            <span class="input-group-addon">帳號</span>
+            <input id="account" type="text" class="form-control" placeholder="帳號長度為6~12個字符(子母+數字)" aria-describedby="basic-addon1" name="userAccount">
+        </div>
+        <span id="account_err" class="error">帳號格式輸入錯誤</span>
+        <span id="check_err" class="error">帳號已被占用，請重新輸入</span>
+        <br />
+
+        <div class="input-group input-group-sm">
+            <span class="input-group-addon">密碼</span>
+            <input id="pass" type="password" class="form-control" placeholder="密碼長度為8~16個字符" aria-describedby="basic-addon1" name="userPass">
+        </div>
+        <span id="pass_err" class="error">密碼格式輸入錯誤</span>
+        <br />
+
+        <div class="input-group input-group-sm">
+            <span class="input-group-addon">驗證</span>
+            <input id="passwd" type="password" class="form-control" placeholder="密碼長度為8~16個字符" aria-describedby="basic-addon1" name="userPasswd">
+        </div>
+        <span id="passwd_err" class="error">兩次密碼輸入不一致</span>
+        <br />
+
+        <div class="input-group input-group-sm">
+            <span class="input-group-addon">暱稱</span>
+            <input required='required' type="text" class="form-control" aria-describedby="basic-addon1" name="nickName">
+        </div>
+        <br />
+
+        <div class="input-group input-group-sm">
+            <span class="input-group-addon">電話</span>
+            <input required='required' type="text" class="form-control" aria-describedby="basic-addon1" name="userPhone">
+        </div>
+        <br />
+
+        <div class="input-group input-group-sm">
+            <span class="input-group-addon">地址</span>
+            <input required='required' type="text" class="form-control" aria-describedby="basic-addon1" name="userAddress">
+        </div>
+        <br />
+
+        <div class="input-group input-group-sm">
+            <span class="input-group-addon">頭像</span>
+            <input required='required' type="file" class="form-control" aria-describedby="basic-addon1" name="userImg">
+        </div>
+        <br />
+
+        <div class="input-group input-group-sm">
+            <span class="input-group-addon">註冊</span>
+            <input type="submit" class="form-control" aria-describedby="basic-addon1" value="註冊">
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock base %}
+

@@ -5,23 +5,50 @@
     <title>GetUsers</title>
 </head>
 <body>
-<!--  h1是傳過來的字典key的值  -->
-{# 這是註釋喔格~模板語法格式 -> 格式 : {{ 中間寫變數 }} #}
-<!--  格式 : \{\{ 中間寫變數 \}\}  -->
-<h1>{{h1}}</h1>
+{# 格式 : {{ 中間寫變數 }}  ， h1是傳過來的字典key的值 #}
+<h1>{{ h1 }}</h1>
 <ul>
-    {# 這是註釋喔格~模板語法格式 -> {% 中間寫python代碼 %} #}
+    {% comment %}
+    <p>
+        這邊都是註釋~ {# 也可這樣註釋(單行) #}
+        模板語法格式 -> {% 中間寫python代碼 %}
+    </p>
+    {% endcomment %}
     <!--users是傳過來的字典key='users'的 "值"，所以users = [user1(Users類的對象,一筆用戶記錄),user2,...]-->
+    測試取列表 : <br>
+    {{  users  }}
+    <br><br>
+    測試取列表元素以及調用其函式 : <br>
+    {{  users.0.fuctionTest  }}<br><br>
+
+    <p>
+        {# users.paginator.page_range 这个函数返回包含一个所有页码数的 range 对象 #}
+        {# 即 range(1, users.paginator.num_pages + 1) #}
+        {% for page_number in users.paginator.page_range %}
+            {# users.number 當前頁數 #}
+            {% ifequal page_number users.number %}
+            {{ page_number }}
+            {% else %}
+            <a href="?pageNum={{ page_number }}">{{ page_number }}</a>
+            {% endifequal %}
+        {% endfor %}
+    </p>
+
     {% for user in users %}
     <li>
+        第 {{ forloop.counter }} 個for循環 : <br>
         <h4>姓名 : {{ user.u_name }}</h4>
         <p>
-        {%  if user.u_gender  %}sex : 噁男
-        {%  else  %}sex : 妹紙
-        {% endif %}
-        , Age:{{ user.u_age }}
+            {%  if user.u_gender  %}
+            sex : 噁男
+            {%  else  %}
+            sex : 妹紙
+            {% endif %}
+            , Age:{{ user.u_age }}
         </p>
     </li>
+    {%  empty  %}
+    <p1>在for中使用，如果 users 為空，則執行這些語句</p1>
     {% endfor %}<!--  結束 for迴圈  -->
 </ul>
 </body>

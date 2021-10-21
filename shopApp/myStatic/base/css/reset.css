@@ -1,0 +1,125 @@
+/*html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img,{
+    margin: 0;
+    padding: 0;
+}
+fieldset, img{
+    border: none;
+}
+img{
+    display: block;
+}
+address, caption, cite, code, dfn, th, var{
+    font-style: normal;
+    font-weight: normal;
+}
+ul, ol{
+    list-style: none;
+}
+body{
+    color: #333;
+    font: 12px/20px "SimSun", "宋體", "Arial Narrow", HELVETICA;
+    background-color: #fff;
+    /* overflow-y: scroll; */
+/*    overflow-x: hidden;
+}
+a{
+    color: #666;
+    text-decoration:none;
+}
+a:visited{
+    color: #666;
+}
+a:hover, a:active, a:focus{
+    color: #ff8400;
+    text-decoration: underline;
+}
+*/
+
+@charset "utf-8";
+
+*{
+    box-sizing: border-box;
+}
+body, nav, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, input, button, textarea, footer, menu{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font: 0.5rem "Microsoft Yahei", "Simsun";
+    color: #353d44;
+    background-color: #efefef;
+    -webkit-text-size-adjust: none;
+    min-width: 320px;
+    font-family: Arial, Helvetica, sans-serif, "Lucida Grande", Verdana;
+}
+h1, h2, h3, h4, h5, h6{
+    font-size: 100%;
+}
+ul, menuP{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: #1a1a1a;
+}
+/*a:hover, a:active, a:focus{
+    color: #1c5aa2;
+    text-decoration: none;
+}
+a:active{
+    color: #aaa;
+}*/
+img{
+    vertical-align: middle;
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+}
+button, input, select, textarea{
+    font-size: 100%;
+    vertical-align: middle;
+    outline: none;
+}
+textarea{
+    resize: none;
+}
+button, input[type="button"], input[type="reset"], input[type="submit"]{
+    cursor:pointer;
+    -webkit-appearance: button;
+    -moz-appearance:button;
+}
+input:focus:-moz-placeholder, input:focus::-webkit-input-placeholder{
+    transparent;
+}
+button::-moz-focus-inner, input::-moz-focus-inner{
+    padding: 0;
+    border: 0;
+}
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/*.f1{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.hide{
+    display: none;
+}
+.show{
+    display: block;
+}*/
+.ellipsis{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.break{
+    word-break: break-all;
+    word-wrap: break-word;
+}
+header, footer, article, section, nav, menu, hgroup{
+    display: block;
+    clear: all;
+}

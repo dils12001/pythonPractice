@@ -20,14 +20,18 @@ from myApp import views
 
 urlpatterns = (
     path('admin/', admin.site.urls),
-    path('hello/', views.hello),
-    path('templatetest/', views.tempTest),
-    path('template2/', views.temp2),
-    path('myApp/', include('myApp.urls')),
+    # 反向解析url : include(('url路徑', '應用名稱'), namespace='為此路徑命名')
+    path('myApp/', include(('myApp.urls', 'myApp'), namespace='toApp')),
     path('a<int:num>', views.num),
-    #使用正則表達式時，用 re_path 方法
-    #^b b開頭
-    #(\d+) 至少一個數字，並且會被當成變數傳入views.num，因為有加()
-    #/$ 以 / 結尾
+    # 使用正則表達式時，用 re_path 方法
+    # ^b b開頭
+    # (\d+) 至少一個數字，並且會被當成變數傳入views.num，因為有加()
+    # /$ 以 / 結尾
+    path('', views.home),
+    path('login/', views.login),
+    path('login/verify/', views.verify),
+    path('logout/', views.log_out),
     re_path(r'^b(\d+)/$', views.num),
+    re_path(r'^get/$', views.get),
+
 )

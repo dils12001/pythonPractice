@@ -1,0 +1,172 @@
+{% extends 'shopmall/base.html' %}
+{% load static %}
+
+
+
+{% block linkscript %}
+    <link rel="stylesheet" href="{% static 'mine/css/mine.css/' %}">
+    <script type="text/javascript" charset="UTF-8" src="{% static 'mine/js/mine.js' %}"></script>
+{% endblock linkscript %}
+
+
+
+{% block base %}
+<div id="mine">
+    <section class="fixed">
+        <span class="glyphicon glyphicon-user"></span>
+        <p><a href="/login/">{{ username }}</a></p>
+        <p><span class="glyphicon glyphicon-fire"></span><span>等級</span></p>
+        <a id="register" href="/register/">註冊</a>
+        <p><span class="glyphicon glyphicon-heart"></span>商品收藏</p>
+    </section>
+
+
+    <section class="mine">
+        <p>
+            <span style="font-size: 0.5rem; font-weight:bold;">我的訂單</span>
+            <a id="showMyOrders" style="color: blue;">查看全部訂單</a>
+        </p>
+        <div id="allOrders">
+            {% comment %}
+            <div class="oneOrder">
+                <div>
+                    <span class="orderId">orderId: 12354645</span>
+                    <span class="orderProgress">目前狀態: 運送中</span>
+                    <span class="orderDetail">詳細資訊</span>
+                </div>
+
+                <div class="detail">
+                    <ul>
+                        {% for item in ordersList %}
+                        <li class="menuList {{ item.productId }}">
+                            <a href="#">
+                                <img src="{{ item.productImg }}" alt="">
+                            </a>
+
+                            <div class="rightDiv">
+                                <a href="#">
+                                    <p>{{ item.productName }}</p>
+                                    <span class="{{ orderId }} productPrice {{ item.productId }}">${{ item.totalPrice }}</span>
+                                </a>
+                                <section>
+                                    <span id="{{ item.productId }}" class="{{ orderId }} productNum">數量: {{ item.productNum }}</span>
+                                </section>
+                            </div>
+                        </li>
+                        {% endfor %}
+
+                        <li class="payTheBill">
+                            <p>
+                                <span id="totalNum">共計 : 531{{ totalProductNum }} 件商品</span>
+                                <span id="totalPrice">總價 : $50000{{ totalPrice }}</span>
+                                <a class="{{ !!!orderId }} cancel">取消訂單</a>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="oneOrder">
+                <span class="orderId">orderId: 12354645</span>
+                <span class="orderProgress">目前狀態: 運送中</span>
+                <span class="orderDetail">詳細資訊</span>
+                <div class="detail">
+                    <ul>
+                        {% for item in ordersList %}
+                        <li class="menuList {{ item.productId }}">
+                            <a href="#">
+                                <img src="{{ item.productImg }}" alt="">
+                            </a>
+
+                            <div class="rightDiv">
+                                <a href="#">
+                                    <p>{{ item.productName }}</p>
+                                    <span class="{{ orderId }} productPrice {{ item.productId }}">${{ item.totalPrice }}</span>
+                                </a>
+                                <section>
+                                    <span id="{{ item.productId }}" class="{{ orderId }} productNum">數量: {{ item.productNum }}</span>
+                                </section>
+                            </div>
+                        </li>
+                        {% endfor %}
+
+                        <li class="payTheBill">
+                            <p>
+                                <span id="totalNum">共計 : 531{{ totalProductNum }} 件商品</span>
+                                <span id="totalPrice">總價 : $50000{{ totalPrice }}</span>
+                                <a class="{{ orderId }} cancel">取消訂單</a>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            {% endcomment %}
+        </div>
+
+        <nav id="nav">
+            <ul>
+                 <li>
+                    <a href="#">
+                        <dl>
+                            <dt><span class="glyphicon glyphicon-usd"></span></dt>
+                            <dd>待付款</dd>
+                        </dl>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <dl>
+                            <dt><span class="glyphicon glyphicon-envelope"></span></dt>
+                            <dd>待出貨</dd>
+                        </dl>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <dl>
+                            <dt><span class="glyphicon glyphicon-envelope"></span></dt>
+                            <dd>待收貨</dd>
+                        </dl>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <dl>
+                            <dt><span class="glyphicon glyphicon-pencil"></span></dt>
+                            <dd>評價</dd>
+                        </dl>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+
+        <menu>
+            <ul>
+                 <li>
+                    <a href="#">
+                        <dl>
+                            <dt><span class="glyphicon glyphicon-bullhorn"></span></dt>
+                            <dd>累計積分</dd>
+                        </dl>
+                    </a>
+                </li>
+            </ul>
+            <li>
+                    <a href="#">
+                        <dl>
+                            <dt><span class="glyphicon glyphicon-bullhorn"></span></dt>
+                            <dd>關於我們</dd>
+                        </dl>
+                    </a>
+                </li>
+            </ul>
+        </menu>
+
+
+        <p><a href="/quit/">登出</a></p>
+
+    </section>
+
+</div>
+{% endblock base %}

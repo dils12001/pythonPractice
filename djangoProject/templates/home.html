@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <style>
+    .tupian img{width:512px; height:640px}
+    </style>
+</head>
+<body>
+    <h1>歡迎光臨 : 親愛的 {{  username  }}</h1>
+    <h5>
+        <a href="login/">登入</a>
+        <a href="logout/">登出</a>
+    </h5>
+    <p>這裡是什麼都沒有的首頁</p>
+
+    <div class="tupian">
+        {# 測試模板語法 : 使用 static路徑 #}
+        <img src="{% static '/myApp/img/1.jpg/' %}"><br>
+        {% for imgPath in imgList%}
+        <img src="{{ imgPath }}"><br>
+        {% endfor %}
+    </div>
+</body>
+</html>

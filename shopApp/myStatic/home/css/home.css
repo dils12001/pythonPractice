@@ -1,0 +1,82 @@
+#home{
+    padding: 1.5rem 0;  // 上下的nav都佔 1.5rem,左右不要padding
+    font-family: 'Microsoft YaHei', 'Helvetica Neue', Helvetica, STHeiTi, Arial, sans-serif;
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+}
+
+#topSwiper{
+    height: 3.95rem;
+    width: 10rem;   // 相當於寬度滿頻
+    overflow: hidden;
+}
+
+#topSwiper div a{
+    display: inline-block;
+    height: 3.95rem;
+    width: 10rem;
+}
+
+#topSwiper img{
+    width: 100%;    /*圖片與<a>同大小*/
+    height: 100%;
+
+}
+
+.topMenu{
+    padding-bottom: 0.1rem;
+}
+
+.topMenu nav{
+    margin: 0.05rem 0.05rem;
+    background: white;
+}
+
+.topMenu nav ul{
+    display: flex;
+}
+
+.topMenu nav li{
+    width: 2rem;
+    text-align: center;
+    font-size: 0.35rem;
+}
+
+.topMenu nav li img{
+    width: 2rem;
+}
+
+#swiperMenu{
+    width: 100%;
+}
+
+#swiperMenu li img{
+    width: 100%;
+    padding: 0.1rem;
+}
+
+
+.child {
+    width: 100%;
+}
+
+.parent {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.parent > div {
+    /*因為還有 margin，如果 flex: 50% 會把元素推到下一列*/
+    flex: 48%; /* or - flex: 0 50% - or - flex-basis: 50% - */
+    margin: 0.05rem;
+    background: white;
+}
+
+.child img{
+    width: 4.8rem;
+    height: 4.8rem;
+}
+
+

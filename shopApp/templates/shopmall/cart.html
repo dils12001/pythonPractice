@@ -1,0 +1,104 @@
+{% extends 'shopmall/base.html' %}
+{% load static %}
+
+
+
+{% block linkscript %}
+    <link rel="stylesheet" href="{% static 'cart/css/cart.css/' %}">
+    <script type="text/javascript" charset="UTF-8" src="{% static 'cart/js/cart.js' %}"></script>
+{% endblock linkscript %}
+
+
+
+{% block base %}
+<div id="cart">
+    <section class="full">
+        <section>
+            <ul>
+                <li>
+                    <div class="clear">
+                        <p class="infoJustify">收貨人 : <span>{{ user.userNickName }}</span></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="clear">
+                        <p class="infoJustify">電話 : <span>{{ user.userPhone }}</span><a href="#" class="change">修改></a></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="clear">
+                        <p class="infoJustify">收貨地址 : <span>{{ user.userAddress }}</span></p>
+                    </div>
+                </li>
+            </ul>
+
+
+
+            <section class="bill">
+                <p>超市</p>
+                <p>全館免運</p>
+                <a href="#">湊單專區</a>
+            </section>
+
+
+
+            <section class="delivery">
+                <span>收貨時間</span><span>一小時內送達</span><a href="#">可預訂</a>
+            </section>
+            <section class="delivery">
+                <span>收貨備註</span>
+                <input type="text" name="" id="" placeholder="可輸入100字以內特殊要求">
+            </section>
+
+
+
+            <menu>
+                <ul>
+                    {% for item in cartsList %}
+                    <li class="menuList {{ item.productId }}">
+                        <div class="confirm isChoose" goodsId="{{ item.productId }}">
+                            <span id="{{ item.productId }}a">
+                                {% ifequal True item.isChoose %}
+                                ✓
+                                {% endifequal %}
+                            </span>
+                        </div>
+
+                        <a href="#">
+                            <img src="{{ item.productImg }}" alt="">
+                        </a>
+
+                        <div class="rightDiv">
+                            <a href="#">
+                                <p>{{ item.productName }}</p>
+                                <span class="productPrice {{ item.productId }}">${{ item.totalPrice }}</span>
+                            </a>
+                            <section>
+                                <button class="subShopping" ga="{{ item.productId }}">-</button>
+                                <span id="{{ item.productId }}" class="productNum">{{ item.productNum }}</span>
+                                <button class="addShopping" ga="{{ item.productId }}">+</button>
+                            </section>
+                        </div>
+                    </li>
+                    {% endfor %}
+
+
+                    <li class="payTheBill">
+                        <div class="confirm">
+                            <span>
+                            {% if isAllSelect %}
+                            ✓
+                            {% endif %}
+                            </span>
+                        </div>
+                        <p><span>全選</span><span id="totalNum">共計 : {{ totalProductNum }} 件商品</span><span id="totalPrice">總價 : ${{ totalPrice }}</span></p>
+                        <a id="ok">選好了</a>
+                    </li>
+                </ul>
+            </menu>
+        </section>
+    </section>
+</div>
+
+{% endblock base %}
+

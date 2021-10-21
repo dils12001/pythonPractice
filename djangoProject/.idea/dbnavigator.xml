@@ -37,7 +37,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files>
-      <object connection-id="03d7916e-253a-4d79-8b17-ffc4a73ab283" object-ref="schemas/mysql789/tables/myapp_departments" />
+      <object connection-id="03d7916e-253a-4d79-8b17-ffc4a73ab283" object-ref="schemas/mysql789/tables/usersprofile" />
     </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
@@ -45,6 +45,9 @@
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="03d7916e-253a-4d79-8b17-ffc4a73ab283" dataset="mysql789.myapp_users" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="03d7916e-253a-4d79-8b17-ffc4a73ab283" dataset="mysql789.usersprofile" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="03d7916e-253a-4d79-8b17-ffc4a73ab283" dataset="mysql789.users" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="03d7916e-253a-4d79-8b17-ffc4a73ab283" dataset="mysql789.django_session" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="03d7916e-253a-4d79-8b17-ffc4a73ab283" dataset="mysql789.myapp_departments" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">

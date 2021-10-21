@@ -4,7 +4,7 @@ from django.db.models import Model
 
 class Users(models.Model):
     u_name = models.CharField(max_length=25,unique=True)
-    u_password = models.CharField(max_length=256,unique=True)
+    u_password = models.CharField(max_length=30,unique=True)
     u_gender = models.BooleanField(default=True)
     u_age = models.IntegerField(default=5)
     #default屬性不管用
@@ -16,14 +16,17 @@ class Users(models.Model):
     #print(Users對象) 時，就可以直接返回u_name
     def __str__(self):
         return self.u_name
-    '''
+
+    def fuctionTest(self):
+        return str(self.u_name) + '此函式不能有self以外的參數'
+
     class Meta:
         #寫在定義該資料表的裡面
         #建立此資料表時，此資料表的名稱，系統預設為 專案名_類名
         db_table = "users"
         #對象獲取數據時會依該 欄位 進行排序，['id']升冪 ['-id']降冪
-        ordering = ['id']
-    '''
+        #ordering = ['id']
+
 
 class deptManager(models.Manager):
     def get_queryset(self):
@@ -45,3 +48,11 @@ class Departments(models.Model):
     # print(Department對象) 時，就可以直接返回d_name
     def __str__(self):
         return self.d_name
+    class Meta:
+        db_table = "depts"
+
+class UsersProfile(models.Model):
+    img = models.ImageField(upload_to='headshots')
+    user = models.OneToOneField(Users, on_delete=models.CASCADE)
+    class Meta:
+        db_table = "usersprofile"

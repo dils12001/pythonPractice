@@ -1,0 +1,99 @@
+{% extends 'shopmall/base.html' %}
+{% load static %}
+
+
+
+
+{% block linkscript %}
+    <link rel="stylesheet" href="{% static 'home/css/home.css' %}">
+    <script type="text/javascript" charset="UTF-8" src="{% static 'home/js/home.js' %}"></script>
+{% endblock linkscript %}
+
+
+
+
+{% block base %}
+<div id="home">
+
+    <section class="swiper-container" id="topSwiper">
+        <div class="swiper-wrapper">
+            {% for item in wheelsList %}
+            <div class="swiper-slide">
+                <a href="#">
+                    <img src="{{ staticURL }}{{ item.img }}" alt="noPicture">
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        <!-- 下方小圓點 -->
+        <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"></div>
+        <!-- 左右按鍵 -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </section>
+
+
+    <section class="topMenu">
+        <nav>
+            <ul>
+                {% for item in navList %}
+                    <li>
+                        <a href="#">
+                            <img src="{{ staticURL }}{{ item.img }}" alt="noIcon">
+                            <span>{{ item.name }}</span>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
+
+
+        <menu class="swiper-container swiperMenu" id="swiperMenu">
+            <a href="#">
+                <img src="https://cf.shopee.tw/file/d4455b9c3cd4902c4f336e899f5574b2" style="width: 10rem; height: 2rem;">
+            </a>
+            <ul class="swiper-wrapper">
+                {% for item in discountList %}
+                <li class="swiper-slide" style="background-color: rgb(208, 2, 27);">
+                    <a href="#">
+                        <img src="{{ staticURL }}{{ item.img }}" alt="noPicture">
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </menu>
+    </section>
+
+    
+    <section>
+        <nav>
+            <div style="background-image: url('https://cf.shopee.tw/file/8bceab95ba1073fe724b3f508d891879'); background-size: cover; background-color: white;">
+                <div>
+                    <span style="color: rgb(238, 77, 45);">
+                        <div class="typo-m16">每日新發現</div>
+                    </span>
+                </div>
+                <a href="#" style="color: rgba(0, 0, 0, 0.54);">查看更多
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                        <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                    </svg>
+                </a>
+            </div>
+        </nav>
+
+        <div class="parent">
+            {% for item in newFindList %}
+            <div class="child">
+                <a href="#">
+                    <img src="{{ item.img }}" alt="noNewFind"><br>
+                    <span>{{ item.name }}</span>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+
+</div>
+
+{% endblock base %}
